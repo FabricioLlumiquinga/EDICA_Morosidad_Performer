@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Consulta_Morosidad" this:Consulta_Morosidad.inTipoIdentificacion="JURIDICA" this:Consulta_Morosidad.inIdentificacion="3102872240" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:this="clr-namespace:" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Consulta_Morosidad" this:Consulta_Morosidad.inTipoIdentificacion="JURIDICA" this:Consulta_Morosidad.inIdentificacion="3102872240" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/cv" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:this="clr-namespace:" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="inTipoIdentificacion" Type="InArgument(x:String)" />
     <x:Property Name="inIdentificacion" Type="InArgument(x:String)" />
@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1038,2711</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055,4938</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Consulta_Morosidad_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -125,22 +125,46 @@
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Consulta_Morosidad" sap:VirtualizedContainerService.HintSize="755,2646" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Consulta_Morosidad" sap:VirtualizedContainerService.HintSize="891,4873" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="CfHzoZgDnQmxNULYrGfH0VQ0gp3SxYRbNwt9NzZGa4PVjVAhTyE9gDe5CMOOzZqotc7/x9Ww5tkvGJd1QLHi+g==" Name="strOCRKey" />
       <Variable x:TypeArguments="x:String" Name="strVerificacion" />
       <Variable x:TypeArguments="x:String" Name="strEnlacePortalWeb" />
       <Variable x:TypeArguments="x:String" Name="strMorosidad" />
       <Variable x:TypeArguments="x:Boolean" Name="bolConsultaCorrecta" />
+      <Variable x:TypeArguments="x:String" Name="strCodigo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - Consultar Portal Web" sap:VirtualizedContainerService.HintSize="693,1463" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:GetOCRText WordsInfo="{x:Null}" DisplayName="Get OCR Text 'IMG  imgCaptchaN'" sap:VirtualizedContainerService.HintSize="829,204" sap2010:WorkflowViewState.IdRef="GetOCRText_2">
+      <ui:GetOCRText.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <p:UiPathDocumentOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_2" Image="[Image]" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000" />
+        </ActivityFunc>
+      </ui:GetOCRText.OCREngine>
+      <ui:GetOCRText.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7664b185-4d17-4add-81aa-324588206acd" InformativeScreenshot="6ae5b9809f402d0e6979d32b627338dd" Selector="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;&lt;webctrl id='imgCaptchaN' tag='IMG' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetOCRText.Target>
+      <ui:GetOCRText.Text>
+        <OutArgument x:TypeArguments="x:String">[strVerificacion]</OutArgument>
+      </ui:GetOCRText.Text>
+    </ui:GetOCRText>
+    <TryCatch DisplayName="Try Catch - Consultar Portal Web" sap:VirtualizedContainerService.HintSize="829,2355" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Sequence - Consulta Portal Web" sap:VirtualizedContainerService.HintSize="655,1203" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Sequence - Consulta Portal Web" sap:VirtualizedContainerService.HintSize="655,2095" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -152,13 +176,13 @@
               <OutArgument x:TypeArguments="x:String">[strEnlacePortalWeb]</OutArgument>
             </ui:GetRobotAsset.Value>
           </ui:GetRobotAsset>
-          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Consulta Morosidad Patronal" sap:VirtualizedContainerService.HintSize="593,943" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Version="V2" WindowResize="Maximize">
+          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Consulta Morosidad Patronal" sap:VirtualizedContainerService.HintSize="593,1832" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Version="V2" WindowResize="Maximize">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="559,703" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="559,1592" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -230,7 +254,7 @@
                       </uix:NSelectItem.Target>
                     </uix:NSelectItem>
                   </Switch>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Número Identificación *'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="497,57" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Text="[inIdentificacion]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Número Identificación *'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="497,286" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Text="[inIdentificacion]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://sfa.ccss.sa.cr/moroso/" CVScreenId="04382213-37d3-4cea-990b-869121a4fdcf" CvElementArea="570, 439, 388, 36" CvType="InputBox" DesignTimeRectangle="573, 438, 380, 36" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='numPatrono' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='numPatrono' tag='INPUT' type='text' class='form-cs-font-size16 cs-no-border-top cs-no-border-left cs-no-border-right cs-border-bottom cs-border-color-blue cs-font-size16 cs-text-blue-dark' aaname='' /&gt;" Guid="48d20075-3b46-4f7e-a775-e1cea0c06781" InformativeScreenshot="86709d73a1d5c788285e2c6eb042560f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -252,13 +276,13 @@
                     </uix:NTypeInto.VerifyOptions>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NTypeInto>
-                  <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" ScrollOffset="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="f42d01ef-0096-4fcb-85f9-06f89264344e" DisplayName="CV Screen Scope 'IMG  imgCaptchaN'" sap:VirtualizedContainerService.HintSize="497,57" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
-                    <p:CVScope.Body>
+                  <p1:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" ScrollOffset="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="34acb206-0a85-4f03-8fd9-28175e91443a" DisplayName="CV Screen Scope 'IMG  imgCaptchaN'" sap:VirtualizedContainerService.HintSize="497,633" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
+                    <p1:CVScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
@@ -269,8 +293,8 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <p:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" ScrollOffset="{x:Null}" Descriptor="[&quot;Target: Button (1258,69,153,54)&quot; +&#xA;&quot;Anchor: Text 'Verificacion de caracteres:' (848,54,190,15)&quot;]" DesignTimeCacheId="34acb206-0a85-4f03-8fd9-28175e91443a" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Button" sap:VirtualizedContainerService.HintSize="354,243" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="60344b2551e6ec8f3d24656a819a6539" NumberOfScrolls="1" RefreshBefore="True" Result="[strVerificacion]" ScrollDirection="None" Version="V6">
-                            <p:CvGetTextWithDescriptor.DesignTimeDescriptor>
+                          <p1:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" ScrollOffset="{x:Null}" Descriptor="[&quot;Target: Button (1258,69,153,54)&quot; +&#xA;&quot;Anchor: Text 'Verificacion de caracteres:' (848,54,190,15)&quot;]" DesignTimeCacheId="34acb206-0a85-4f03-8fd9-28175e91443a" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Button" sap:VirtualizedContainerService.HintSize="400,243" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="60344b2551e6ec8f3d24656a819a6539" NumberOfScrolls="1" RefreshBefore="True" Result="[strVerificacion]" ScrollDirection="None" Version="V6">
+                            <p1:CvGetTextWithDescriptor.DesignTimeDescriptor>
                               <uc:CvDescriptor Id="a584d1b1-1157-4bce-b4aa-07fe20b605ba">
                                 <uc:CvDescriptor.Anchors>
                                   <x:Array Type="uc:CvElementDescriptor">
@@ -281,233 +305,19 @@
                                   <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="1258, 69, 153, 54" ElementType="Button" />
                                 </uc:CvDescriptor.Target>
                               </uc:CvDescriptor>
-                            </p:CvGetTextWithDescriptor.DesignTimeDescriptor>
-                          </p:CvGetTextWithDescriptor>
+                            </p1:CvGetTextWithDescriptor.DesignTimeDescriptor>
+                          </p1:CvGetTextWithDescriptor>
                         </Sequence>
                       </ActivityAction>
-                    </p:CVScope.Body>
-                    <p:CVScope.DesignTimeCache>
+                    </p1:CVScope.Body>
+                    <p1:CVScope.DesignTimeCache>
                       <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" />
-                    </p:CVScope.DesignTimeCache>
-                    <p:CVScope.DesignTimeCacheContainer>
+                    </p1:CVScope.DesignTimeCache>
+                    <p1:CVScope.DesignTimeCacheContainer>
                       <uc:CvCacheContainer>
                         <uc:CvCacheContainer.Caches>
-                          <scg:List x:TypeArguments="uc:CVCache" Capacity="2">
-                            <uc:CVCache DataSent="False" DisplayName="Screen CV Get Text - 'C 9 2 8 " Id="f42d01ef-0096-4fcb-85f9-06f89264344e" InformativeScreenshot="3bcf1cf6be4a43fcb0693340344b45ce" LogicalPosition="2045, 347" OcrText="Consulta Morosidad Patronal X &gt; (13) UiPath - Computer Vision A X Ui Activities - Get OCR Text X Ui UiPath Screen OCR requires API X + _ X sfa.ccss.sa.cr/moroso/ &quot;UiPath Browser Automation 23.10&quot; started debugging this browser Cancel X Consulta Morosidad Patronal Inicio Reporte Patronos mas Morosos Validar Documento Digital Buscar Direccion de Cobros COSTA RICA Cumplimiento Art. 74 Ley Constitutiva CCSS Busqueda de Patrono por Identificacion * Tipo Identificacion Numero Identificacion i Verificacion de caracteres: * C 9 2 1 CEDULA JURIDICA v 3102872240 8 BUSCAR © 2024 DESARROLLADO POR LA SUBAREA DE SISTEMAS FINANCIEROS ADMINISTRATIVOS, CAJA COSTARRICENSE DE SEGURO SOCIAL VERSION 1.5.1.1 15/12/2021 TODOS LOS DERECHOS RESERVADOS" Position="2045, 347" ScreenshotGuid="d22ec8e9-4010-4ca3-91da-1f9ac62ddb07" ServerVersion="1">
-                              <uc:CVCache.CvAnchorRelations>
-                                <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="4">
-                                  <uc:AnchorRelationInfo IsTargetText="False" Target="14">
-                                    <uc:AnchorRelationInfo.Anchors>
-                                      <x:Array Type="x:Int32">
-                                        <x:Int32>74</x:Int32>
-                                        <x:Int32>75</x:Int32>
-                                        <x:Int32>76</x:Int32>
-                                      </x:Array>
-                                    </uc:AnchorRelationInfo.Anchors>
-                                  </uc:AnchorRelationInfo>
-                                  <uc:AnchorRelationInfo IsTargetText="False" Target="8">
-                                    <uc:AnchorRelationInfo.Anchors>
-                                      <x:Array Type="x:Int32">
-                                        <x:Int32>71</x:Int32>
-                                        <x:Int32>72</x:Int32>
-                                      </x:Array>
-                                    </uc:AnchorRelationInfo.Anchors>
-                                  </uc:AnchorRelationInfo>
-                                  <uc:AnchorRelationInfo IsTargetText="False" Target="56">
-                                    <uc:AnchorRelationInfo.Anchors>
-                                      <x:Array Type="x:Int32">
-                                        <x:Int32>69</x:Int32>
-                                        <x:Int32>70</x:Int32>
-                                      </x:Array>
-                                    </uc:AnchorRelationInfo.Anchors>
-                                  </uc:AnchorRelationInfo>
-                                  <uc:AnchorRelationInfo IsTargetText="False" Target="16">
-                                    <uc:AnchorRelationInfo.Anchors>
-                                      <x:Array Type="x:Int32">
-                                        <x:Int32>29</x:Int32>
-                                      </x:Array>
-                                    </uc:AnchorRelationInfo.Anchors>
-                                  </uc:AnchorRelationInfo>
-                                </scg:List>
-                              </uc:CVCache.CvAnchorRelations>
-                              <uc:CVCache.CvUiElements>
-                                <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="64">
-                                  <uc:CvElementInfo Category="Button" Region="36, 4, 239, 36" />
-                                  <uc:CvElementInfo Category="Icon" Region="1761, 50, 24, 23" />
-                                  <uc:CvElementInfo Category="Button" Region="1182, 211, 67, 33" />
-                                  <uc:CvElementInfo Category="Button" Region="1719, 212, 74, 32" />
-                                  <uc:CvElementInfo Category="Icon" Region="1571, 413, 49, 48" />
-                                  <uc:CvElementInfo Category="Icon" Region="759, 9, 22, 21" />
-                                  <uc:CvElementInfo Category="Button" Region="1505, 212, 212, 33" />
-                                  <uc:CvElementInfo Category="Button" Region="553, 504, 814, 54" />
-                                  <uc:CvElementInfo Category="InputBox" Region="564, 431, 385, 35" />
-                                  <uc:CvElementInfo Category="MinimizeButton" Region="1794, 10, 22, 18" />
-                                  <uc:CvElementInfo Category="Button" Region="277, 3, 234, 37" />
-                                  <uc:CvElementInfo Category="Icon" Region="521, 9, 22, 21" />
-                                  <uc:CvElementInfo Category="Button" Region="417, 92, 76, 41" />
-                                  <uc:CvElementInfo Category="Icon" Region="46, 10, 20, 20" />
-                                  <uc:CvElementInfo Category="InputBox" Region="968, 429, 377, 37" />
-                                  <uc:CvElementInfo Category="Icon" Region="1724, 50, 24, 24" />
-                                  <uc:CvElementInfo Category="InputBox" Region="114, 44, 1594, 36" />
-                                  <uc:CvElementInfo Category="Button" Region="516, 3, 233, 35" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="1884, 103, 20, 20" />
-                                  <uc:CvElementInfo Category="Icon" Region="84, 52, 20, 20" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="485, 11, 17, 17" />
-                                  <uc:CvElementInfo Category="Icon" Region="124, 51, 24, 23" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="247, 11, 17, 18" />
-                                  <uc:CvElementInfo Category="Icon" Region="1815, 51, 23, 20" />
-                                  <uc:CvElementInfo Category="Icon" Region="996, 10, 19, 19" />
-                                  <uc:CvElementInfo Category="MaximizeButton" Region="1841, 10, 19, 19" />
-                                  <uc:CvElementInfo Category="Button" Region="754, 3, 232, 34" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="961, 11, 17, 17" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="723, 11, 18, 18" />
-                                  <uc:CvElementInfo Category="Icon" Region="1676, 51, 22, 22" />
-                                  <uc:CvElementInfo Category="Icon" Region="907, 402, 38, 38" />
-                                  <uc:CvElementInfo Category="CloseButton" Region="1887, 10, 19, 19" />
-                                  <uc:CvElementInfo Category="Icon" Region="1889, 50, 19, 25" />
-                                  <uc:CvElementInfo Category="Icon" Region="1849, 49, 27, 26" />
-                                  <uc:CvElementInfo Category="Button" Region="1384, 416, 152, 53" />
-                                  <uc:CvElementInfo Category="Button" Region="1249, 211, 255, 33" />
-                                  <uc:CvElementInfo Category="Icon" Region="283, 11, 21, 17" />
-                                  <uc:CvElementInfo Category="Icon" Region="11, 52, 21, 21" />
-                                  <uc:CvElementInfo Category="Icon" Region="120, 193, 119, 115" />
-                                  <uc:CvElementInfo Category="Icon" Region="47, 52, 21, 21" />
-                                  <uc:CvElementInfo Category="ArrowButton" Region="3, 3, 34, 34" />
-                                  <uc:CvElementInfo Category="Button" Region="2, 2, 37, 36" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1401, 431, 19, 20" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1444, 430, 32, 31" />
-                                  <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="46, 52, 21, 21" />
-                                  <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="11, 52, 22, 21" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1426, 434, 17, 20" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="3, 3, 33, 34" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1479, 428, 20, 23" />
-                                  <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1849, 49, 27, 26" />
-                                  <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="909, 403, 34, 35" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1625, 426, 16, 15" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="323, 684, 17, 17" />
-                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="417, 92, 76, 42" />
-                                  <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="535, 459, 25, 13" />
-                                  <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="146, 399, 395, 28" />
-                                  <uc:CvElementInfo Category="InputBox" Region="152, 428, 385, 44" />
-                                  <uc:CvElementInfo Category="ArrowButton" Region="513, 435, 22, 30" />
-                                </scg:List>
-                              </uc:CVCache.CvUiElements>
-                              <uc:CVCache.OcrTexts>
-                                <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="110">
-                                  <uc:OcrTextInfo Region="71, 14, 47, 12" Text="Consulta" />
-                                  <uc:OcrTextInfo Region="121, 14, 58, 12" Text="Morosidad" />
-                                  <uc:OcrTextInfo Region="181, 14, 44, 12" Text="Patronal" />
-                                  <uc:OcrTextInfo Region="250, 14, 10, 11" Text="X" />
-                                  <uc:OcrTextInfo Region="289, 16, 8, 7" Text="&gt;" />
-                                  <uc:OcrTextInfo Region="309, 14, 21, 14" Text="(13)" />
-                                  <uc:OcrTextInfo Region="333, 14, 35, 12" Text="UiPath" />
-                                  <uc:OcrTextInfo Region="370, 15, 6, 11" Text="-" />
-                                  <uc:OcrTextInfo Region="379, 14, 54, 15" Text="Computer" />
-                                  <uc:OcrTextInfo Region="434, 14, 34, 12" Text="Vision" />
-                                  <uc:OcrTextInfo Region="469, 14, 9, 12" Text="A" />
-                                  <uc:OcrTextInfo Region="489, 14, 9, 10" Text="X" />
-                                  <uc:OcrTextInfo Region="526, 14, 11, 11" Text="Ui" />
-                                  <uc:OcrTextInfo Region="546, 14, 50, 12" Text="Activities" />
-                                  <uc:OcrTextInfo Region="598, 15, 6, 11" Text="-" />
-                                  <uc:OcrTextInfo Region="605, 14, 21, 12" Text="Get" />
-                                  <uc:OcrTextInfo Region="627, 14, 26, 12" Text="OCR" />
-                                  <uc:OcrTextInfo Region="654, 14, 23, 12" Text="Text" />
-                                  <uc:OcrTextInfo Region="727, 14, 9, 10" Text="X" />
-                                  <uc:OcrTextInfo Region="764, 14, 11, 11" Text="Ui" />
-                                  <uc:OcrTextInfo Region="785, 14, 36, 12" Text="UiPath" />
-                                  <uc:OcrTextInfo Region="823, 14, 36, 12" Text="Screen" />
-                                  <uc:OcrTextInfo Region="861, 14, 26, 12" Text="OCR" />
-                                  <uc:OcrTextInfo Region="888, 14, 45, 15" Text="requires" />
-                                  <uc:OcrTextInfo Region="934, 14, 18, 12" Text="API" />
-                                  <uc:OcrTextInfo Region="965, 14, 9, 10" Text="X" />
-                                  <uc:OcrTextInfo Region="999, 13, 12, 13" Text="+" />
-                                  <uc:OcrTextInfo Region="1798, 10, 13, 13" Text="_" />
-                                  <uc:OcrTextInfo Region="1890, 13, 13, 13" Text="X" />
-                                  <uc:OcrTextInfo Region="155, 56, 138, 15" Text="sfa.ccss.sa.cr/moroso/" />
-                                  <uc:OcrTextInfo Region="15, 106, 43, 13" Text="&quot;UiPath" />
-                                  <uc:OcrTextInfo Region="61, 107, 48, 12" Text="Browser" />
-                                  <uc:OcrTextInfo Region="110, 107, 70, 12" Text="Automation" />
-                                  <uc:OcrTextInfo Region="182, 107, 37, 12" Text="23.10&quot;" />
-                                  <uc:OcrTextInfo Region="221, 106, 41, 13" Text="started" />
-                                  <uc:OcrTextInfo Region="265, 106, 64, 16" Text="debugging" />
-                                  <uc:OcrTextInfo Region="331, 106, 22, 13" Text="this" />
-                                  <uc:OcrTextInfo Region="355, 106, 48, 13" Text="browser" />
-                                  <uc:OcrTextInfo Region="434, 106, 40, 13" Text="Cancel" />
-                                  <uc:OcrTextInfo Region="1887, 106, 13, 13" Text="X" />
-                                  <uc:OcrTextInfo Region="246, 214, 139, 26" Text="Consulta" />
-                                  <uc:OcrTextInfo Region="393, 214, 164, 26" Text="Morosidad" />
-                                  <uc:OcrTextInfo Region="565, 213, 131, 27" Text="Patronal" />
-                                  <uc:OcrTextInfo Region="1194, 220, 40, 15" Text="Inicio" />
-                                  <uc:OcrTextInfo Region="1261, 220, 58, 18" Text="Reporte" />
-                                  <uc:OcrTextInfo Region="1321, 220, 66, 15" Text="Patronos" />
-                                  <uc:OcrTextInfo Region="1389, 220, 33, 15" Text="mas" />
-                                  <uc:OcrTextInfo Region="1425, 220, 64, 15" Text="Morosos" />
-                                  <uc:OcrTextInfo Region="1515, 220, 53, 15" Text="Validar" />
-                                  <uc:OcrTextInfo Region="1570, 220, 84, 15" Text="Documento" />
-                                  <uc:OcrTextInfo Region="1656, 220, 46, 18" Text="Digital" />
-                                  <uc:OcrTextInfo Region="1730, 220, 52, 15" Text="Buscar" />
-                                  <uc:OcrTextInfo Region="247, 249, 128, 24" Text="Direccion" />
-                                  <uc:OcrTextInfo Region="381, 250, 36, 22" Text="de" />
-                                  <uc:OcrTextInfo Region="422, 250, 97, 23" Text="Cobros" />
-                                  <uc:OcrTextInfo Region="156, 287, 25, 9" Text="COSTA" />
-                                  <uc:OcrTextInfo Region="182, 288, 18, 7" Text="RICA" />
-                                  <uc:OcrTextInfo Region="247, 303, 118, 19" Text="Cumplimiento" />
-                                  <uc:OcrTextInfo Region="367, 304, 30, 15" Text="Art." />
-                                  <uc:OcrTextInfo Region="400, 304, 20, 15" Text="74" />
-                                  <uc:OcrTextInfo Region="424, 304, 28, 18" Text="Ley" />
-                                  <uc:OcrTextInfo Region="455, 303, 97, 16" Text="Constitutiva" />
-                                  <uc:OcrTextInfo Region="555, 304, 44, 15" Text="CCSS" />
-                                  <uc:OcrTextInfo Region="154, 365, 95, 21" Text="Busqueda" />
-                                  <uc:OcrTextInfo Region="253, 365, 25, 17" Text="de" />
-                                  <uc:OcrTextInfo Region="282, 366, 75, 16" Text="Patrono" />
-                                  <uc:OcrTextInfo Region="361, 369, 33, 17" Text="por" />
-                                  <uc:OcrTextInfo Region="397, 365, 130, 17" Text="Identificacion" />
-                                  <uc:OcrTextInfo Region="1166, 399, 7, 7" Text="*" />
-                                  <uc:OcrTextInfo Region="153, 402, 33, 17" Text="Tipo" />
-                                  <uc:OcrTextInfo Region="190, 401, 96, 15" Text="Identificacion" />
-                                  <uc:OcrTextInfo Region="564, 401, 58, 15" Text="Numero" />
-                                  <uc:OcrTextInfo Region="626, 401, 96, 15" Text="Identificacion" />
-                                  <uc:OcrTextInfo Region="920, 411, 11, 20" Text="i" />
-                                  <uc:OcrTextInfo Region="974, 401, 85, 15" Text="Verificacion" />
-                                  <uc:OcrTextInfo Region="1062, 401, 19, 15" Text="de" />
-                                  <uc:OcrTextInfo Region="1083, 403, 80, 13" Text="caracteres:" />
-                                  <uc:OcrTextInfo Region="1628, 429, 9, 8" Text="*" />
-                                  <uc:OcrTextInfo Region="1404, 433, 11, 13" Text="C" />
-                                  <uc:OcrTextInfo Region="1428, 436, 13, 16" Text="9" />
-                                  <uc:OcrTextInfo Region="1447, 433, 12, 16" Text="2" />
-                                  <uc:OcrTextInfo Region="1482, 430, 13, 16" Text="1" />
-                                  <uc:OcrTextInfo Region="169, 443, 54, 13" Text="CEDULA" />
-                                  <uc:OcrTextInfo Region="224, 443, 62, 13" Text="JURIDICA" />
-                                  <uc:OcrTextInfo Region="519, 445, 11, 9" Text="v" />
-                                  <uc:OcrTextInfo Region="579, 440, 91, 14" Text="3102872240" />
-                                  <uc:OcrTextInfo Region="1461, 442, 12, 16" Text="8" />
-                                  <uc:OcrTextInfo Region="927, 524, 65, 13" Text="BUSCAR" />
-                                  <uc:OcrTextInfo Region="325, 686, 12, 13" Text="©" />
-                                  <uc:OcrTextInfo Region="339, 686, 33, 12" Text="2024" />
-                                  <uc:OcrTextInfo Region="375, 686, 102, 12" Text="DESARROLLADO" />
-                                  <uc:OcrTextInfo Region="481, 686, 27, 12" Text="POR" />
-                                  <uc:OcrTextInfo Region="511, 686, 17, 12" Text="LA" />
-                                  <uc:OcrTextInfo Region="531, 686, 61, 12" Text="SUBAREA" />
-                                  <uc:OcrTextInfo Region="594, 686, 18, 12" Text="DE" />
-                                  <uc:OcrTextInfo Region="615, 686, 66, 12" Text="SISTEMAS" />
-                                  <uc:OcrTextInfo Region="684, 686, 87, 12" Text="FINANCIEROS" />
-                                  <uc:OcrTextInfo Region="774, 686, 124, 14" Text="ADMINISTRATIVOS," />
-                                  <uc:OcrTextInfo Region="900, 686, 35, 12" Text="CAJA" />
-                                  <uc:OcrTextInfo Region="938, 686, 107, 12" Text="COSTARRICENSE" />
-                                  <uc:OcrTextInfo Region="1048, 686, 18, 12" Text="DE" />
-                                  <uc:OcrTextInfo Region="1068, 686, 53, 12" Text="SEGURO" />
-                                  <uc:OcrTextInfo Region="1124, 686, 49, 12" Text="SOCIAL" />
-                                  <uc:OcrTextInfo Region="1174, 686, 57, 12" Text="VERSION" />
-                                  <uc:OcrTextInfo Region="1235, 686, 43, 12" Text="1.5.1.1" />
-                                  <uc:OcrTextInfo Region="1283, 686, 73, 12" Text="15/12/2021" />
-                                  <uc:OcrTextInfo Region="1359, 686, 46, 12" Text="TODOS" />
-                                  <uc:OcrTextInfo Region="1407, 686, 26, 12" Text="LOS" />
-                                  <uc:OcrTextInfo Region="1436, 686, 70, 12" Text="DERECHOS" />
-                                  <uc:OcrTextInfo Region="1508, 686, 85, 12" Text="RESERVADOS" />
-                                </scg:List>
-                              </uc:CVCache.OcrTexts>
-                            </uc:CVCache>
-                            <uc:CVCache DataSent="False" DisplayName="Screen CV Get Text - 'C 9 2 8  (Main)" Id="34acb206-0a85-4f03-8fd9-28175e91443a" InformativeScreenshot="2bbf3fac4897af424299f6db8f1323ce" LogicalPosition="2045, 347" OcrText="Busqueda de Patrono por Identificacion * Tipo Identificacion Numero Identificacion i Verificacion de caracteres: * C 9 2 1 CEDULA JURIDICA v 3102872240 8 BUSCAR" Position="2045, 347" ScreenshotGuid="2363f318-60bc-4273-ab10-2f0b7378d0d2" ServerVersion="1">
+                          <scg:List x:TypeArguments="uc:CVCache" Capacity="4">
+                            <uc:CVCache DataSent="False" DisplayName="Screen CV Get Text - 'C 9 2 8  " Id="34acb206-0a85-4f03-8fd9-28175e91443a" InformativeScreenshot="2bbf3fac4897af424299f6db8f1323ce" LogicalPosition="2045, 347" OcrText="Busqueda de Patrono por Identificacion * Tipo Identificacion Numero Identificacion i Verificacion de caracteres: * C 9 2 1 CEDULA JURIDICA v 3102872240 8 BUSCAR" Position="2045, 347" ScreenshotGuid="2363f318-60bc-4273-ab10-2f0b7378d0d2" ServerVersion="1">
                               <uc:CVCache.CvAnchorRelations>
                                 <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="4">
                                   <uc:AnchorRelationInfo IsTargetText="False" Target="3">
@@ -588,20 +398,45 @@
                                 </scg:List>
                               </uc:CVCache.OcrTexts>
                             </uc:CVCache>
+                            <uc:CVCache DataSent="False" DisplayName="Main Screen" Id="3ee8a0af-a138-4ca4-a208-8e73b6b606d4" InformativeScreenshot="ac6b8099aa1c743aa3b96030ff5693ed" LogicalPosition="1385, 418" OcrText="8 1 7" Position="1385, 418" ScreenshotGuid="23d2c2ea-aed9-46c0-8996-7b3f56662700" ServerVersion="1">
+                              <uc:CVCache.CvAnchorRelations>
+                                <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                              </uc:CVCache.CvAnchorRelations>
+                              <uc:CVCache.CvUiElements>
+                                <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="16">
+                                  <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="95, 19, 21, 26" />
+                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="72, 14, 16, 20" />
+                                  <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="0, 0, 150, 50" />
+                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="94, 21, 21, 24" />
+                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="21, 13, 18, 20" />
+                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="18, 4, 51, 33" />
+                                  <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="21, 10, 33, 25" />
+                                  <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="2, 0, 148, 13" />
+                                  <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 0, 42, 9" />
+                                </scg:List>
+                              </uc:CVCache.CvUiElements>
+                              <uc:CVCache.OcrTexts>
+                                <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="3">
+                                  <uc:OcrTextInfo Region="38, 17, 13, 16" Text="8" />
+                                  <uc:OcrTextInfo Region="74, 14, 13, 18" Text="1" />
+                                  <uc:OcrTextInfo Region="98, 22, 13, 17" Text="7" />
+                                </scg:List>
+                              </uc:CVCache.OcrTexts>
+                            </uc:CVCache>
                           </scg:List>
                         </uc:CvCacheContainer.Caches>
                       </uc:CvCacheContainer>
-                    </p:CVScope.DesignTimeCacheContainer>
-                    <p:CVScope.OCREngine>
+                    </p1:CVScope.DesignTimeCacheContainer>
+                    <p1:CVScope.OCREngine>
                       <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
                         <ActivityFunc.Argument>
                           <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
                         </ActivityFunc.Argument>
-                        <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_1" Image="[Image]" Language="en" NoopExecution="False" Profile="Screen" Scale="1" Timeout="100000" />
+                        <p:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_1" Image="[Image]" Language="en" NoopExecution="False" Profile="Screen" Scale="1" Timeout="100000" />
                       </ActivityFunc>
-                    </p:CVScope.OCREngine>
-                    <p:CVScope.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8ede0b61-1cf9-45d7-9a38-ed236612ed8f" InformativeScreenshot="5db7aad5a46056ef38dd5ed04c933a22" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' tag='DIV' /&gt;">
+                    </p1:CVScope.OCREngine>
+                    <p1:CVScope.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8ede0b61-1cf9-45d7-9a38-ed236612ed8f" InformativeScreenshot="628fcde75b1514e10e9abd455bbbd514" Selector="&lt;webctrl id='imgCaptchaN' tag='IMG' /&gt;">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -609,18 +444,18 @@
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
                       </ui:Target>
-                    </p:CVScope.Target>
-                    <p:CVScope.UseLocalServer>
+                    </p1:CVScope.Target>
+                    <p1:CVScope.UseLocalServer>
                       <InArgument x:TypeArguments="x:Boolean" />
-                    </p:CVScope.UseLocalServer>
+                    </p1:CVScope.UseLocalServer>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </p:CVScope>
-                  <Assign DisplayName="Assign - Verificacion" sap:VirtualizedContainerService.HintSize="497,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  </p1:CVScope>
+                  <Assign DisplayName="Assign - Verificacion" sap:VirtualizedContainerService.HintSize="497,84" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strVerificacion]</OutArgument>
                     </Assign.To>
@@ -634,7 +469,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Verificación de'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="497,57" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Text="[strVerificacion]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Verificación de'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="497,84" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Text="[strVerificacion]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://sfa.ccss.sa.cr/moroso/index.jsp" CVScreenId="1cc68ff8-195d-4cd0-9cf6-dd66db4ed5ee" CvElementArea="977, 434, 376, 41" CvType="InputBox" DesignTimeRectangle="983, 438, 365, 36" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='captchaConsulta' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl name='captchaConsulta' tag='INPUT' type='text' class='cs-font-size16 cs-no-border-top cs-no-border-left cs-no-border-right cs-border-bottom cs-border-color-blue cs-no-margin-bottom cs-no-padding-left' aaname='' /&gt;" Guid="31b151f7-a237-4545-b6e5-e1490553b2f0" InformativeScreenshot="a2abe21c8aaf96ecb36e3fcf9394261f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -661,7 +496,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NTypeInto>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="497,50" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Version="V3">
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="497,77" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="01fd5e43-2e5d-4b53-b7b0-701ce5867bc5" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://sfa.ccss.sa.cr/moroso/index.jsp" CVScreenId="c4339eaf-966c-42c3-a8c6-a5d66332303a" CvElementArea="561, 512, 812, 54" CvTextArea="935, 532, 65, 13" CvTextArgument="BUSCAR" CvType="Button" DesignTimeRectangle="565, 514, 806, 50" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl id='btnConsultaMorosidad' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='btnConsultaMorosidad' tag='BUTTON' type='submit' class='cs-font-size11 cs-btn btn-primary cs-primary cs-width-50 cs-border-none cs-margin-20px-bottom cs-margin-20px-top cs-md-display-block cs-lg-width-50 cs-md-width-50 cs-md-margin-lr-auto cs-sm-width-100 text-center' aaname='Buscar' check:innerText='BUSCAR' /&gt;" Guid="503cf52a-16c8-4d21-b5b9-913b4c106379" InformativeScreenshot="a26d73f8851bb58c34724ffc66737aae.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -720,26 +555,23 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence DisplayName="Sequence - Extraer Informacion" sap:VirtualizedContainerService.HintSize="693,1095" sap2010:WorkflowViewState.IdRef="Sequence_16">
+    <Sequence DisplayName="Sequence - Extraer Informacion" sap:VirtualizedContainerService.HintSize="829,2226" sap2010:WorkflowViewState.IdRef="Sequence_16">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:UiElementExists DisplayName="Element Exists - Patrono" Exists="[bolConsultaCorrecta]" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+      <ui:UiElementExists DisplayName="Element Exists - Patrono" Exists="[bolConsultaCorrecta]" sap:VirtualizedContainerService.HintSize="767,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
         <ui:UiElementExists.Target>
-          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1bfd7244-351e-4411-9952-c410389aa0c7" InformativeScreenshot="e4d5965528a381a7eed6da2b30ed4fa0" Selector="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;&lt;webctrl aaname='PATRONO / *' tag='SPAN' /&gt;">
-            <ui:Target.TimeoutMS>
-              <InArgument x:TypeArguments="x:Int32" />
-            </ui:Target.TimeoutMS>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1bfd7244-351e-4411-9952-c410389aa0c7" InformativeScreenshot="e4d5965528a381a7eed6da2b30ed4fa0" Selector="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;&lt;webctrl aaname='PATRONO / *' tag='SPAN' /&gt;" TimeoutMS="5000">
             <ui:Target.WaitForReady>
               <InArgument x:TypeArguments="ui:WaitForReady" />
             </ui:Target.WaitForReady>
           </ui:Target>
         </ui:UiElementExists.Target>
       </ui:UiElementExists>
-      <If Condition="[bolConsultaCorrecta]" DisplayName="If - Consulta Correcta" sap:VirtualizedContainerService.HintSize="450,689" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[bolConsultaCorrecta]" DisplayName="If - Consulta Correcta" sap:VirtualizedContainerService.HintSize="767,1820" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -747,27 +579,27 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,133" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="733,1180" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Consulta Morosidad Patronal" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="77ef7998-60f4-4ead-9d16-525c1f7a2594" Version="V2">
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Consulta Morosidad Patronal" sap:VirtualizedContainerService.HintSize="671,1092" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="77ef7998-60f4-4ead-9d16-525c1f7a2594" Version="V2">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,326" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637,812" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uix:NGetText DisplayName="Get Text - Morosidad" sap:VirtualizedContainerService.HintSize="354,189" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="77ef7998-60f4-4ead-9d16-525c1f7a2594" TextString="[strMorosidad]" Version="V3">
+                    <uix:NGetText DisplayName="Get Text - Morosidad" sap:VirtualizedContainerService.HintSize="575,189" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="77ef7998-60f4-4ead-9d16-525c1f7a2594" TextString="[strMorosidad]" Version="V3">
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable BrowserURL="https://sfa.ccss.sa.cr/moroso/consultarMorosidad.do" CVScreenId="3cb89d91-f178-4100-a574-1575a540c340" CvTextArea="161, 635, 205, 15" CvType="AnyWordGroup" DesignTimeRectangle="162, 634, 204, 19" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='PATRONO / TI / AV MOROSO' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' type='' class='panel-title cs-font-size16 cs-font-weight-600 cs-text-blue-dark cs-sm-text-center' /&gt;" Guid="74910f3a-b1fb-4758-9d3d-6b00cd08ef9e" InformativeScreenshot="8f342e16ab1dfe1a94eaa60eb459f6ed.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
@@ -778,15 +610,15 @@
                         </uix:TargetAnchorable>
                       </uix:NGetText.Target>
                     </uix:NGetText>
-                    <If Condition="[strMorosidad.ToUpper.Contains(&quot;MOROSO&quot;)]" DisplayName="If - Morosidad" sap:VirtualizedContainerService.HintSize="575,502" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[strMorosidad.ToUpper.Contains(&quot;MOROSO&quot;)]" DisplayName="If - Morosidad" sap:VirtualizedContainerService.HintSize="575,533" sap2010:WorkflowViewState.IdRef="If_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,78" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -823,7 +655,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="541,286" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="541,289" sap2010:WorkflowViewState.IdRef="Sequence_11">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -871,7 +703,7 @@
               </uix:NApplicationCard.TargetApp>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -879,7 +711,7 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,386" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,470" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="bolInscrita" />
               <Variable x:TypeArguments="x:Boolean" Name="bolErrores" />
@@ -890,7 +722,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:UiElementExists DisplayName="Element Exists - No aparece inscrita" Exists="[bolInscrita]" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+            <ui:UiElementExists DisplayName="Element Exists - No aparece inscrita" Exists="[bolInscrita]" sap:VirtualizedContainerService.HintSize="354,84" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="32d5f8c1-492e-4324-a631-e52d060537c1" InformativeScreenshot="7608079d1148d520efaf55e86a2f3d8a" Selector="&lt;html app='chrome.exe' title='Consulta Morosidad Patronal' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TH' innertext='no aparece inscrita' /&gt;" TimeoutMS="3000">
                   <ui:Target.WaitForReady>
@@ -905,7 +737,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[bolInscrita]" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[bolInscrita]" sap:VirtualizedContainerService.HintSize="354,84" sap2010:WorkflowViewState.IdRef="If_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -977,7 +809,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[bolErrores]" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[bolErrores]" sap:VirtualizedContainerService.HintSize="354,75" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1038,7 +870,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="450,156" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="chrome" />
+      <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="767,156" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="chrome" />
     </Sequence>
   </Sequence>
 </Activity>
